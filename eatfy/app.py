@@ -12,8 +12,6 @@ def Finalizar_App():
     os.system('cls')
     print('Aplicativo Encerrado!\n')
 
-#print(f'Você escolheu a opção {opcao_escolhida}')
-
 def opcao_escolhida():
     opcao_escolhida = int(input('Digite a opcao escolhida '))
     if opcao_escolhida == 1:
