@@ -12,35 +12,37 @@ def opcoes():
     print('4. Sair\n')
 
 def Finalizar_App():
-    os.system('cls')
-    print('Aplicativo Encerrado!\n')
+    subtitulos('Aplicativo Encerrado! ')
+
+def voltar_menu():
+    input('Digite qualquer tecla para voltar ao menu: ')
+    main()
 
 def opcao_invalida():
     print('Opção Invalida!\n')
-    input('Aperte qualquer tecla para voltar ao inicio do programa: ')
-    main()
+    voltar_menu()
+
+def subtitulos(texto_opcões):
+    os.system('cls')
+    print(f'{texto_opcões}\n')
+
 
 def cadastrar_restaurante():
-    os.system('cls')
-    print('Cadastro de novos restaurantes\n')
+    subtitulos('Cadastros De Novos Restaurantes: ')
     Nome_Restaurante = input("Digite o Nome do Restaurante: ")
     Restaurantes.append(Nome_Restaurante)
     print(f'O restaurante {Nome_Restaurante} foi cadastrado com sucesso!\n')
-    input('Digite qualquer tecla para voltar ao menu principal: ')
-    main()
+    voltar_menu()
     
 def Lista_Restaurantes():
-     os.system('cls')
-     print('Todos os Restaurantes Cadastrados: \n')
+     subtitulos('Restaurantes Cadastrados: ')
      contador = 0 
      for restaurantes in Restaurantes:
          contador += 1
          print(f'{contador}. {restaurantes}')    
 
-     input('\nDigite qualquer tecla para voltar ao menu principal: ')
-     main()
+     voltar_menu()
 
-#print(f'Você escolheu a opção {opcao_escolhida}')
 
 def opcao_escolhida():
     try:
@@ -60,6 +62,7 @@ def opcao_escolhida():
 
     except:
         opcao_invalida()
+
 def main():
     os.system('cls')
     nome_app()
