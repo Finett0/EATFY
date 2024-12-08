@@ -1,6 +1,9 @@
 import os 
 
-Restaurantes = ['Outback','Comenalle','Ça-va']
+Restaurantes = [{'nome':'Sushi Alvim','categoria':'Japonesa','ativo':False},
+                {'nome':'FinettoS','categoria':'Italiana','ativo': True},
+                {'nome':'Comenalle','categoria':'Prato Feito','ativo':False}
+]
 
 def nome_app():
     print("EATFY\n")
@@ -33,13 +36,17 @@ def cadastrar_restaurante():
     Restaurantes.append(Nome_Restaurante)
     print(f'O restaurante {Nome_Restaurante} foi cadastrado com sucesso!\n')
     voltar_menu()
+
     
 def Lista_Restaurantes():
      subtitulos('Restaurantes Cadastrados: ')
      contador = 0 
      for restaurantes in Restaurantes:
          contador += 1
-         print(f'{contador}. {restaurantes}')    
+         nome_restaurantes = restaurantes['nome']
+         categoria = restaurantes['categoria']
+         ativo = restaurantes['ativo']
+         print(f'{contador}. {nome_restaurantes} | {categoria} | {ativo}\n')    
 
      voltar_menu()
 
@@ -68,6 +75,10 @@ def main():
     nome_app()
     opcoes()
     opcao_escolhida()
+
+
+if __name__ == '__main__':
+    main()
 
 
 if __name__ == '__main__':
