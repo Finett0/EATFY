@@ -33,7 +33,9 @@ def subtitulos(texto_opcões):
 def cadastrar_restaurante():
     subtitulos('Cadastros De Novos Restaurantes: ')
     Nome_Restaurante = input("Digite o Nome do Restaurante: ")
-    Restaurantes.append(Nome_Restaurante)
+    categoria = input(f'Digite o nome da categoria do restaurante {Nome_Restaurante}: ')
+    dados_restaurante = {'nome':Nome_Restaurante,'categoria':categoria,'ativo':False}
+    Restaurantes.append(dados_restaurante)
     print(f'O restaurante {Nome_Restaurante} foi cadastrado com sucesso!\n')
     voltar_menu()
 
@@ -51,6 +53,22 @@ def Lista_Restaurantes():
      voltar_menu()
 
 
+def status_restaurante():
+    subtitulos('Alterar Status Restaurante')
+    Nome_Restaurante = input('Digite o nome do Restaurante que deseja alterar o status: ')
+    restaurante_localizado = False
+
+    for restaurante in Restaurantes:
+        if Nome_Restaurante == restaurante['nome']:
+            restaurante_localizado = True
+            restaurante['ativo'] = not restaurante['ativo']
+            mensagem = f'O restaurante {Nome_Restaurante} foi ativado com sucesso' if restaurante ['ativo'] else f'O restaurante {Nome_Restaurante} foi desativado com sucesso'
+            print(mensagem)
+    if not restaurante_localizado:
+        print('Restaurante não foi localizado!')
+
+    voltar_menu()
+
 def opcao_escolhida():
     try:
         opcao_escolhida = int(input('Digite a opcao escolhida '))
@@ -61,7 +79,7 @@ def opcao_escolhida():
             Lista_Restaurantes()
 
         elif opcao_escolhida == 3:
-            print('Restaurantes ativados')
+            status_restaurante()
         elif opcao_escolhida == 4:
             Finalizar_App()
         else:
@@ -75,10 +93,6 @@ def main():
     nome_app()
     opcoes()
     opcao_escolhida()
-
-
-if __name__ == '__main__':
-    main()
 
 
 if __name__ == '__main__':
