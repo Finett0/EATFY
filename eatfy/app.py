@@ -11,7 +11,7 @@ def nome_app():
 def opcoes():
     print('1. Cadastrar restaurante')
     print('2. Listar restaurante')
-    print('3. Ativar restaurante')
+    print('3. Alternar Status do Restaurante')
     print('4. Sair\n')
 
 def Finalizar_App():
@@ -47,8 +47,8 @@ def Lista_Restaurantes():
          contador += 1
          nome_restaurantes = restaurantes['nome']
          categoria = restaurantes['categoria']
-         ativo = restaurantes['ativo']
-         print(f'{contador}. {nome_restaurantes} | {categoria} | {ativo}\n')    
+         ativo = 'Ativado' if restaurantes['ativo'] else 'Desativado'
+         print(f'{contador}. {nome_restaurantes.ljust(20)} | {categoria.ljust(20)} | {ativo}\n')    
 
      voltar_menu()
 
